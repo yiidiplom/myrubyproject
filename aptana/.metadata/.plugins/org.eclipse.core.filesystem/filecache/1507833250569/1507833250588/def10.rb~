@@ -1,0 +1,7 @@
+def myfun(x=0,y=0)
+ return x*y
+ end
+ 
+ puts myfun()
+ puts myfun(3)
+ puts myfun(2,3)
