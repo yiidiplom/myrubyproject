@@ -1,5 +1,0 @@
-requaire_reletive "cart.rb"
-requaire_reletive "item.rb"
-
-cart = Cart.new
-cart.add_item()
