@@ -1,9 +1,18 @@
 module ItemConteiner
+   
+   module ClassMethods
  
-   module Manager
-       
+      def min_price
+         100#from Internet dollar price 
+      end
+   end   
+   
+   module InstanceMethods
+              
       def add_item(item)
-         @items.push(item)
+         unless item.price < self.class.min_price
+            @items.push(item)
+         end
       end
        
       def remove_item
@@ -18,14 +27,17 @@ module ItemConteiner
          @items.delete_if {|i| i.price.nil?}
       end
    
-   end
-
-   module Info
-   
       def count_valid_items
          @items.count {|i| i.price} 
       end
-    
+      
+   end 
+   
+   def self.included(base)
+      base.extend ClassMethods
+      base.class_eval do
+         include InstanceMethods
+         end
    end
 
 end

@@ -2,11 +2,15 @@ class Order
 
    attr_reader :items
    
-   include ItemConteiner::Manager
-   include ItemConteiner::Info
+   include ItemConteiner
    
+
    def initialize
       @items = Array.new
+      #...
+   end
+   def place
+      #place
    end
 
 end

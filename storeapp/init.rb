@@ -6,20 +6,21 @@ require_relative "real_item"
 require_relative "virtual_item"
 
 
-item1 = VirtualItem.new({:price=>10,:weight=>250,:name=>"Proga"})
-item2 = RealItem.new({:price=>25,:weight=>450,:name=>"Butter"})
-item3 = RealItem.new({:price=>12,:weight=>150,:name=>"Meat"})
+item1 = VirtualItem.new({:price=>101,:weight=>250,:name=>"Proga"})
+item2 = RealItem.new({:price=>250,:weight=>450,:name=>"Butter"})
+item3 = RealItem.new({:price=>50,:weight=>150,:name=>"Meat"})
 
 cart = Cart.new
 cart.add_item(item1)
 cart.add_item(item2)
-cart.remove_item
+cart.add_item(item3)
+#cart.remove_item
 
 order = Order.new
 order.add_item(item1)
 order.add_item(item2)
 order.add_item(item3)
-order.remove_item
+#order.remove_item
 
 #puts "Do :"
 #p cart.items
