@@ -10,10 +10,16 @@ class Cart
    end
 
    def save_to_file
-     File.open("#{@owner}_cart.txt","w") do |f|
-        @items.each {|i| f.puts "#{i.name}:#{i.price}:#{i.weight}"}#cup:101:250
-     end
-   end
+     File.open("#{@owner}_cart.txt","a") do |f|
+         @items.each do |i| 
+	    if  i.class==RealItem 
+		f.puts "#{i.name}:#{i.price}:#{i.weight}"#cup:101:250
+	    else 
+		f.puts "#{i.name}:#{i.price}:NoWeightForVirtual"
+	    end#if
+	end#di_i
+     end#do_f
+   end#def
 
    def read_from_file
      return unless File.exist?("#{@owner}_cart.txt")
