@@ -11,11 +11,11 @@ class Cart
 
    def save_to_file
      File.open("#{@owner}_cart.txt","a") do |f|
-         @items.each do |i| 
-	    if  i.class==RealItem 
-		f.puts "#{i.name}:#{i.price}:#{i.weight}"#cup:101:250
-	    else 
-		f.puts "#{i.name}:#{i.price}:NoWeightForVirtual"
+         @items.each do |i|
+	    if  i.class==RealItem
+		f.puts i.to_s_real ###{}"#{i.name}:#{i.price}:#{i.weight}"#cup:101:250
+	    else
+		f.puts i.to_s_virtual ##{#}"#{i.name}:#{i.price}:NoWeightForVirtual"
 	    end#if
 	end#di_i
      end#do_f
