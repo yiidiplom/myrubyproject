@@ -8,7 +8,7 @@ require_relative "virtual_item"
 @items = []
 @items << VirtualItem.new({:price=>101,:weight=>250,:name=>"cup"})
 @items << RealItem.new({:price=>250,:weight=>450,:name=>"car"})
-@items << RealItem.new({:price=>50,:weight=>150,:name=>"per"})
+@items << RealItem.new({:price=>150,:weight=>150,:name=>"per"})
 
 
 # item1 = VirtualItem.new({:price=>101,:weight=>250,:name=>"Proga"})
