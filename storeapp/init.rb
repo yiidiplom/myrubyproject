@@ -1,15 +1,19 @@
 require_relative "string"
 require_relative "item_conteiner"
-require_relative "cart"
-require_relative "order"
 require_relative "item"
 require_relative "real_item"
 require_relative "virtual_item"
+require_relative "antique_item"
+require_relative "cart"
+require_relative "order"
+
 
 @items = []
 @items << VirtualItem.new({:price=>101,:weight=>250,:name=>"cup"})
 @items << RealItem.new({:price=>250,:weight=>450,:name=>"car"})
 @items << RealItem.new({:price=>750,:weight=>150,:name=>"per"})
+@items << AntiqueItem.new({:price=>750,:weight=>150,:name=>"gel"})
+
 
 
 # item1 = VirtualItem.new({:price=>101,:weight=>250,:name=>"Proga"})

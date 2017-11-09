@@ -12,7 +12,7 @@ cart.read_from_file
 begin
    cart.save_to_file
 rescue Cart::ItemsNOTSupported
-   puts "One of your item does not add"
+   puts "One of your item does not add for examle #{Cart::UNSUPPORTED_ITEMS}"
 end
 
 #p cart.items

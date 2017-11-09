@@ -5,6 +5,8 @@ class Cart
    include ItemConteiner
    class ItemsNOTSupported<StandardError; end
 
+   UNSUPPORTED_ITEMS = [AntiqueItem,VirtualItem]
+
    def initialize(owner)
       @items = Array.new
       @owner = owner
@@ -13,7 +15,7 @@ class Cart
    def save_to_file
      File.open("#{@owner}_cart.txt","a") do |f|
          @items.each  do |i|
-            raise ItemsNOTSupported,"--Cart not supported VirtualItem --" if i.class == VirtualItem
+            raise ItemsNOTSupported if UNSUPPORTED_ITEMS.include?(i.class)
          f.puts i
          end #do_i
 
