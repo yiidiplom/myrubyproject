@@ -27,12 +27,12 @@ class Item
       (@real_price - @real_price*self.class.discount)+tax if @real_price
    end
 
-   def to_s_real
-      "#{self.name}:#{self.price}:#{self.weight}"
-
-   end
-   def to_s_virtual
+   def to_s
+      if self.class==RealItem
+         "#{self.name}:#{self.price}:#{self.weight}"
+         else
       "#{self.name}:#{self.price}:NoWeightForVirtual"
+      end
 
    end
 

@@ -1,3 +1,0 @@
-cup:117.15:NoWeightForVirtual
-car:289.5:450
-per:864.5:150
