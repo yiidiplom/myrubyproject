@@ -3,6 +3,7 @@ class Cart
    attr_reader :items
 
    include ItemConteiner
+   class ItemsNOTSupported<StandardError; end
 
    def initialize(owner)
       @items = Array.new
@@ -11,7 +12,11 @@ class Cart
 
    def save_to_file
      File.open("#{@owner}_cart.txt","a") do |f|
-         @items.each {|i| f.puts i}
+         @items.each  do |i|
+            raise ItemsNOTSupported,"--Cart not supported VirtualItem --" if i.class == VirtualItem
+         f.puts i
+         end #do_i
+
      end#do_f
    end#def
 

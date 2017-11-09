@@ -8,6 +8,11 @@ end
 
 
 cart.read_from_file
-cart.save_to_file
+
+begin
+   cart.save_to_file
+rescue Cart::ItemsNOTSupported
+   puts "One of your item does not add"
+end
 
 #p cart.items
