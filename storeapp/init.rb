@@ -18,9 +18,28 @@ cart = Cart.new("ROman")
 cart.add_item RealItem.new({:price=>150,:weight=>350,:name=>"car"})
 cart.add_item RealItem.new({:price=>250,:weight=>450,:name=>"car"})
 cart.add_item RealItem.new({:price=>350,:weight=>550,:name=>"asd"})
-puts cart.all_cars
-puts cart.all_asd
 
+method = "all_cars"
+puts cart.send(method)
+
+puts @items[0].send(:price)
+puts @items[0].price
+puts @items[0].send(:tax)
+#puts @items[0].tax
+
+
+puts @items[0].kind_of?(Item)#true
+puts @items[0].kind_of?(VirtualItem)#true
+puts @items[0].kind_of?(RealItem)#false
+
+puts @items[0].class == Item #false
+puts @items[0].class == VirtualItem #true
+
+puts @items[0].respond_to?(:price)#true
+puts @items[0].respond_to?(:other_method)#false
+
+
+#puts @items[0].class == VirtualItem
 
 
 # item1 = VirtualItem.new({:price=>101,:weight=>250,:name=>"Proga"})
