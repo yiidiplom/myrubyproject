@@ -3,6 +3,9 @@ class Cart
    attr_reader :items
 
    include ItemConteiner
+   class ItemsNOTSupported<StandardError; end
+
+   UNSUPPORTED_ITEMS = [AntiqueItem,VirtualItem]
 
    def initialize(owner)
       @items = Array.new
@@ -11,6 +14,7 @@ class Cart
 
    def save_to_file
      File.open("#{@owner}_cart.txt","a") do |f|
+<<<<<<< HEAD
        do |i|
          if @items.i.respond_to?(:weight)
            f.puts "#{i.weight}"         #f.puts "#{i.name}:#{i.price}:#{i.weight}"}
@@ -25,14 +29,22 @@ class Cart
    end#def
 
 
+=======
+         @items.each  do |i|
+            raise ItemsNOTSupported if UNSUPPORTED_ITEMS.include?(i.class)
+         f.puts i
+         end #do_i
+
+     end#do_f
+   end#def
+>>>>>>> 7c58a179524b86df6fa5d9ecf6cab84efe229ca9
 
    def read_from_file
-     return unless File.exist?("#{@owner}_cart.txt")
-     item_fields = File.readlines("#{@owner}_cart.txt")#"cup:101:250\n"
-     item_fields.map! {|i| i.chomp }
-     item_fields.map! {|i| i.split(":") }
-     item_fields.each {|i| @items<<RealItem.new(name:i[0],price:i[1].to_f, weight:i[2].to_f)}
-     @items.uniq!
-   end
+      File.readlines("#{@owner}_cart.txt").each {|i| @items << i.to_real_item}
+      @items.uniq!
+   rescue Errno::ENOENT
+      File.open("#{@owner}_cart.txt","w")
+      puts "File  #{@owner}_cart.txt was created "
+  end
 
 end
